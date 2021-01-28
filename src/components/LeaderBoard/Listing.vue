@@ -11,17 +11,15 @@
     style="background-color: #171920; color: white;"
   >
     <template v-slot:top>
-      <q-list>
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <img style="height: 50px; width: 50px" src="/images/logo.png" />
-          </q-item-section>
-
-          <q-item-section class="text-h4 text-center">
-            Leader Board
-          </q-item-section>
-        </q-item>
-      </q-list>
+      <div class="full-width" style="text-align: center">
+        <img
+          style="height: 100px; width: 100px; background-color: white; border-radius: 50%; border: 1px solid white;"
+          src="/images/logo-without-bg.png"
+        />
+        <div class="text-h4 text-center" style="margin-top: 5px;">
+          Leader Board
+        </div>
+      </div>
     </template>
     <template v-slot:no-data="{ icon, message, filter }">
       <div class="full-width row flex-center text-accent q-gutter-sm">
@@ -62,8 +60,9 @@ export default {
           name: "index",
           label: "Rank",
           field: "index",
-          headerStyle: "font-size: x-large;",
-          style: "font-size: large;"
+          headerStyle:
+            "font-size: xx-large; text-align: center; background-color: #171920;",
+          style: "font-size: x-large; text-align: center; "
         },
         {
           name: "name",
@@ -73,8 +72,8 @@ export default {
           field: row => row.user.name,
           format: val => `${val}`,
           sortable: false,
-          headerStyle: "font-size: x-large;",
-          style: "font-size: large;"
+          headerStyle: "font-size: xx-large; background-color: #171920;",
+          style: "font-size: x-large;"
         },
         {
           name: "score",
@@ -82,8 +81,8 @@ export default {
           label: "Score",
           field: "score",
           sortable: false,
-          headerStyle: "font-size: x-large;",
-          style: "font-size: large;"
+          headerStyle: "font-size: xx-large; background-color: #171920;",
+          style: "font-size: x-large;"
         }
       ]
     };
@@ -133,6 +132,9 @@ body > table {
 }
 </style>
 <style lang="sass">
+
+.q-table__middle
+  overflow-y: hidden
 
 
 .my-sticky-dynamic
