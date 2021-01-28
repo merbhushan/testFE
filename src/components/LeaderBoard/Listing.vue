@@ -1,30 +1,41 @@
 <template>
-  <div class="q-pa-md">
-    <q-table
-      ref="leaderBoard"
-      class="my-sticky-dynamic"
-      title="Leader Board"
-      :data="data"
-      :columns="columns"
-      row-key="index"
-      :rows-per-page-options="[0]"
-      hide-bottom
-      no-data-label="I didn't find anything for you"
-    >
-      <template v-slot:no-data="{ icon, message, filter }">
-        <div class="full-width row flex-center text-accent q-gutter-sm">
-          <q-icon size="2em" name="sentiment_dissatisfied" />
-          <span> Well this is sad... {{ message }} </span>
-          <q-icon size="2em" :name="filter ? 'filter_b_and_w' : icon" />
-        </div>
-      </template>
-      <template v-slot:body-cell-index="index">
-        <q-td :props="index">
-          <div>{{ index.pageIndex + 1 }}</div>
-        </q-td>
-      </template>
-    </q-table>
-  </div>
+  <q-table
+    ref="leaderBoard"
+    class="my-sticky-dynamic"
+    :data="data"
+    :columns="columns"
+    row-key="index"
+    :rows-per-page-options="[0]"
+    hide-bottom
+    no-data-label="I didn't find anything for you"
+    style="background-color: #171920; color: white;"
+  >
+    <template v-slot:top>
+      <q-list>
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <img style="height: 50px; width: 50px" src="/images/logo.png" />
+          </q-item-section>
+
+          <q-item-section class="text-h4 text-center">
+            Leader Board
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </template>
+    <template v-slot:no-data="{ icon, message, filter }">
+      <div class="full-width row flex-center text-accent q-gutter-sm">
+        <q-icon size="2em" name="sentiment_dissatisfied" />
+        <span> Well this is sad... {{ message }} </span>
+        <q-icon size="2em" :name="filter ? 'filter_b_and_w' : icon" />
+      </div>
+    </template>
+    <template v-slot:body-cell-index="index">
+      <q-td :props="index">
+        <div>{{ index.pageIndex + 1 }}</div>
+      </q-td>
+    </template>
+  </q-table>
 </template>
 
 <script>
@@ -50,7 +61,9 @@ export default {
         {
           name: "index",
           label: "Rank",
-          field: "index"
+          field: "index",
+          headerStyle: "font-size: x-large;",
+          style: "font-size: large;"
         },
         {
           name: "name",
@@ -59,14 +72,18 @@ export default {
           align: "left",
           field: row => row.user.name,
           format: val => `${val}`,
-          sortable: false
+          sortable: false,
+          headerStyle: "font-size: x-large;",
+          style: "font-size: large;"
         },
         {
           name: "score",
           align: "center",
           label: "Score",
           field: "score",
-          sortable: false
+          sortable: false,
+          headerStyle: "font-size: x-large;",
+          style: "font-size: large;"
         }
       ]
     };
@@ -122,7 +139,6 @@ body > table {
   .q-table__top,
   .q-table__bottom,
   thead tr:first-child th /* bg color is important for th; just specify one */
-    background-color: #fff
 
   thead tr th
     position: sticky

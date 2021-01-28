@@ -1,8 +1,6 @@
 <template>
-  <div class="q-pa-md">
-    <Loader v-if="loading" />
-    <Listing v-else :data="data" :refreshData="refreshData" />
-  </div>
+  <Loader v-if="loading" />
+  <Listing v-else :data="data" :refreshData="refreshData" />
 </template>
 
 <script>
