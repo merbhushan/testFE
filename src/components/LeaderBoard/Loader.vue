@@ -1,6 +1,9 @@
 <template>
-  <div class="full-screen">
-    <q-img style="height: 100%" src="/images/loader/loader-3.gif" />
+  <div class="full-screen" style="position: relative;">
+    <img
+      style="position: absolute; bottom: 50%; right: 50%; height: 100px; width: 100px; background-color: white; border-radius: 50%; border: 1px solid white; margin: auto;"
+      src="/images/logo-without-bg.png"
+    />
   </div>
 </template>
 
